@@ -27,32 +27,25 @@ export default function Search() {
     setCity(event.target.value);
   }
 
+  const searchForm = (
+    <div className="Search">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search"
+          placeholder="Enter a city.."
+          autoFocus
+          onChange={updateCity}
+        />
+        <input type="submit" value="Search" />
+      </form>
+    </div>
+  );
   if (temp === "") {
-    return (
-      <div className="Search">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            placeholder="Enter a city.."
-            autoFocus
-            onChange={updateCity}
-          />
-          <input type="submit" value="Search" />
-        </form>
-      </div>
-    );
+    return searchForm;
   } else {
     return (
-      <div className="Search">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            placeholder="Enter a city.."
-            autoFocus
-            onChange={updateCity}
-          />
-          <input type="submit" value="Search" />
-        </form>
+      <div>
+        {searchForm}
         <ul>
           <li>Temperature: {temp}°C</li>
           <li>Description: {desc}</li>
