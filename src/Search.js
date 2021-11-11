@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function Search() {
+  let [cityInput, setCityInput] = useState("");
   let [city, setCity] = useState("");
   let [temp, setTemp] = useState("");
   let [desc, setDesc] = useState("");
   let [humidity, setHumidity] = useState("");
   let [wind, setWind] = useState("");
   let [iconUrl, setIcon] = useState("");
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5df8b506b715f17ed0c74fd6fd849642&units=metric`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5df8b506b715f17ed0c74fd6fd849642&units=metric`;
   function getWeather(response) {
+    setCity(response.data.name);
     setTemp(Math.round(response.data.main.temp));
     setDesc(response.data.weather[0].description);
     setHumidity(response.data.main.humidity);
@@ -21,10 +23,11 @@ export default function Search() {
   function handleSubmit(event) {
     event.preventDefault();
     axios.get(url).then(getWeather);
+    setCityInput("");
   }
 
-  function updateCity(event) {
-    setCity(event.target.value);
+  function updateCityInput(event) {
+    setCityInput(event.target.value);
   }
 
   const searchForm = (
@@ -34,7 +37,8 @@ export default function Search() {
           type="search"
           placeholder="Enter a city.."
           autoFocus
-          onChange={updateCity}
+          value={cityInput}
+          onChange={updateCityInput}
         />
         <input type="submit" value="Search" />
       </form>
@@ -47,6 +51,9 @@ export default function Search() {
       <div>
         {searchForm}
         <ul>
+          <li>
+            <h2>{city}</h2>
+          </li>
           <li>Temperature: {temp}°C</li>
           <li>Description: {desc}</li>
           <li>Humidity: {humidity}%</li>

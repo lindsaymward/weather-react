@@ -1,0 +1,7 @@
+.Weather {
+  border: 1px solid black;
+}
+
+.Weather ul {
+  list-style-type: none;
+}
