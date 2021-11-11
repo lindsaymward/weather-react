@@ -1,7 +1,20 @@
 .Weather {
   border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .Weather ul {
   list-style-type: none;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.Weather li {
+  line-height: 1.75;
+}
+
+.Weather .capitalize {
+  text-transform: capitalize;
 }

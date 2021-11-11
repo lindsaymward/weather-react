@@ -55,7 +55,7 @@ export default function Search() {
             <h2>{city}</h2>
           </li>
           <li>Temperature: {temp}°C</li>
-          <li>Description: {desc}</li>
+          <li className="capitalize">Description: {desc}</li>
           <li>Humidity: {humidity}%</li>
           <li>Wind: {wind}km/h</li>
           <li>
