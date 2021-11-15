@@ -23,7 +23,8 @@ export default function App() {
               rel="noreferrer"
             >
               Lindsay Ward
-            </a>
+            </a>{" "}
+            🧑🏼‍💻🇨🇦👋
           </p>
         </footer>
       </div>
