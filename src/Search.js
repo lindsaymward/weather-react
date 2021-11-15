@@ -31,7 +31,7 @@ export default function Search() {
   }
 
   const searchForm = (
-    <div className="Search">
+    <div className="Search row">
       <form onSubmit={handleSubmit}>
         <input
           type="search"
@@ -39,8 +39,13 @@ export default function Search() {
           autoFocus
           value={cityInput}
           onChange={updateCityInput}
+          className="col-sm-9"
         />
-        <input type="submit" value="Search" />
+        <input
+          type="submit"
+          value="Search"
+          className="btn btn-primary col-sm-3"
+        />
       </form>
     </div>
   );
@@ -52,12 +57,17 @@ export default function Search() {
         {searchForm}
         <ul>
           <li>
-            <h2>{city}</h2>
+            <h1>{city}</h1>
           </li>
-          <li>Temperature: {temp}°C</li>
-          <li className="capitalize">Description: {desc}</li>
-          <li>Humidity: {humidity}%</li>
-          <li>Wind: {wind}km/h</li>
+          <li>
+            <span className="temp">{temp}</span>
+            <span className="unit">°C</span>
+          </li>
+          <span className="conditions">
+            <li>Humidity: {humidity}%</li>
+            <li>Wind: {wind}km/h</li>
+            <li className="capitalize">{desc}</li>
+          </span>
           <li>
             <img src={iconUrl} alt="Weather icon" />
           </li>

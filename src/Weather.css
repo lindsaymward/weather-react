@@ -1,7 +1,19 @@
 .Weather {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px;
+  margin: 20px;
+}
+
+.Weather .row {
+  margin: 15px;
+}
+
+.Weather .btn {
+  margin: 5px;
+}
+.Weather h1 {
+  font-size: 32px;
+  font-weight: 600;
 }
 
 .Weather ul {
@@ -13,6 +25,22 @@
 
 .Weather li {
   line-height: 1.75;
+}
+
+.Weather .temp {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.Weather .unit {
+  position: relative;
+  top: -13px;
+}
+
+.Weather ul .conditions {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 300;
 }
 
 .Weather .capitalize {

@@ -1,5 +1,12 @@
 .App {
   font-family: sans-serif;
-  margin-left: 40px;
+  margin: 10px;
   text-align: center;
+  height: 0 auto;
+  max-width: 600px;
+}
+
+.App footer {
+  font-size: 14px;
+  font-weight: 200;
 }
