@@ -24,7 +24,7 @@ export default function App() {
             >
               Lindsay Ward
             </a>{" "}
-            🧑🏼‍💻🇨🇦👋
+            🧑🏼‍💻🇨🇦🏳️‍🌈👋
           </p>
         </footer>
       </div>
