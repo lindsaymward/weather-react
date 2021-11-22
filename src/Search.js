@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
+import WeatherUnit from "./WeatherUnit";
 
 export default function Search() {
   let [cityInput, setCityInput] = useState("");
@@ -58,10 +59,7 @@ export default function Search() {
           <li>
             <FormattedDate date={weatherData.date} />
           </li>
-          <li>
-            <span className="temp">{weatherData.temp}</span>
-            <span className="unit">°C</span>
-          </li>
+          <WeatherUnit metricTemperature={weatherData.temp} />
           <span className="conditions">
             <li>Humidity: {weatherData.humidity}%</li>
             <li>Wind: {weatherData.wind}km/h</li>
