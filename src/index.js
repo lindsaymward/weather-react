@@ -7,7 +7,7 @@ import App from "./App";
 ReactDOM.render(
   <React.StrictMode>
     <div className="wrapper">
-      <App />
+      <App city="Vancouver" />
     </div>
   </React.StrictMode>,
   document.getElementById("root")

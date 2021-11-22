@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 
 export default function Search() {
   let [cityInput, setCityInput] = useState("");
-  let [weatherData, setWeatherData] = useState({});
+  let [weatherData, setWeatherData] = useState({ ready: false });
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5df8b506b715f17ed0c74fd6fd849642&units=metric`;
   function getWeather(response) {
     setWeatherData({
@@ -13,6 +14,8 @@ export default function Search() {
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed),
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      date: response.data.dt * 1000,
+      ready: true,
     });
   }
   function handleSubmit(event) {
@@ -44,15 +47,16 @@ export default function Search() {
       </form>
     </div>
   );
-  if (weatherData.temp === "") {
-    return searchForm;
-  } else {
+  if (weatherData.ready) {
     return (
       <div>
         {searchForm}
         <ul>
           <li>
             <h1>{weatherData.city}</h1>
+          </li>
+          <li>
+            <FormattedDate date={weatherData.date} />
           </li>
           <li>
             <span className="temp">{weatherData.temp}</span>
@@ -69,5 +73,7 @@ export default function Search() {
         </ul>
       </div>
     );
+  } else {
+    return searchForm;
   }
 }
