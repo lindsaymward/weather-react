@@ -6,6 +6,10 @@
   max-width: 600px;
 }
 
+.App li {
+  list-style-type: none;
+}
+
 .App footer {
   font-size: 14px;
   font-weight: 200;

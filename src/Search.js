@@ -52,25 +52,31 @@ export default function Search() {
   if (weatherData.ready) {
     return (
       <div>
-        <div>
-          {searchForm}
-          <ul>
-            <li>
-              <h1>{weatherData.city}</h1>
-            </li>
-            <li>
-              <FormattedDate date={weatherData.date} />
-            </li>
+        {searchForm}
+        <div className="row">
+          <div className="col-8">
+            <ul>
+              <li>
+                <h1>{weatherData.city}</h1>
+              </li>
+              <li>
+                <img src={weatherData.iconUrl} alt="Weather icon" />
+              </li>
+              <li className="capitalize conditions">{weatherData.desc}</li>
+            </ul>
+          </div>
+          <div className="col-4">
             <WeatherUnit metricTemperature={weatherData.temp} />
-            <span className="conditions">
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: {weatherData.wind}km/h</li>
-              <li className="capitalize">{weatherData.desc}</li>
-            </span>
-            <li>
-              <img src={weatherData.iconUrl} alt="Weather icon" />
-            </li>
-          </ul>
+            <ul>
+              <span className="conditions">
+                <li>
+                  <FormattedDate date={weatherData.date} />
+                </li>
+                <li>Humidity: {weatherData.humidity}%</li>
+                <li>Wind: {weatherData.wind}km/h</li>
+              </span>
+            </ul>
+          </div>
         </div>
         <div>
           <Forecast icon={weatherData.iconUrl} />
