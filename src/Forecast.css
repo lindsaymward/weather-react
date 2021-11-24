@@ -1,0 +1,18 @@
+.Forecast {
+  font-style: italic;
+}
+
+.Forecast h2 {
+  font-size: 16px;
+  font-style: italic;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+.Forecast img {
+  height: 50px;
+}
+
+.Forecast .temp-min {
+  opacity: 0.8;
+}

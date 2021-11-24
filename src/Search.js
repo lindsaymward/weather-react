@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherUnit from "./WeatherUnit";
+import Forecast from "./Forecast";
 
 export default function Search() {
   let [cityInput, setCityInput] = useState("");
@@ -51,24 +52,29 @@ export default function Search() {
   if (weatherData.ready) {
     return (
       <div>
-        {searchForm}
-        <ul>
-          <li>
-            <h1>{weatherData.city}</h1>
-          </li>
-          <li>
-            <FormattedDate date={weatherData.date} />
-          </li>
-          <WeatherUnit metricTemperature={weatherData.temp} />
-          <span className="conditions">
-            <li>Humidity: {weatherData.humidity}%</li>
-            <li>Wind: {weatherData.wind}km/h</li>
-            <li className="capitalize">{weatherData.desc}</li>
-          </span>
-          <li>
-            <img src={weatherData.iconUrl} alt="Weather icon" />
-          </li>
-        </ul>
+        <div>
+          {searchForm}
+          <ul>
+            <li>
+              <h1>{weatherData.city}</h1>
+            </li>
+            <li>
+              <FormattedDate date={weatherData.date} />
+            </li>
+            <WeatherUnit metricTemperature={weatherData.temp} />
+            <span className="conditions">
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {weatherData.wind}km/h</li>
+              <li className="capitalize">{weatherData.desc}</li>
+            </span>
+            <li>
+              <img src={weatherData.iconUrl} alt="Weather icon" />
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Forecast icon={weatherData.iconUrl} />
+        </div>
       </div>
     );
   } else {
