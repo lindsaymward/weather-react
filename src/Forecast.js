@@ -1,41 +1,38 @@
 import React, { useState } from "react";
 import "./Forecast.css";
 import axios from "axios";
+import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
-  const [forecast, setForecast] = useState({ ready: false });
+  const [ready, setReady] = useState(false);
+  const [forecast, setForecast] = useState(null);
+
   function handleResponse(response) {
-    setForecast({
-      minTemp: Math.round(response.data.daily[0].temp.min),
-      maxTemp: Math.round(response.data.daily[0].temp.max),
-      ready: true,
-    });
+    setForecast(response.data.daily);
+    setReady(true);
   }
+}
+
+if (ready) {
+  return (
+    <div className="Forecast">
+      <div className="row">
+        {forecast.map(function (dailyForecast, index) {
+          if (index < 5) {
+            return (
+              <div className="col" key={index}>
+                <ForecastDay data={dailyForecast} />
+              </div>
+            );
+          }
+        })}
+      </div>
+    </div>
+  );
+} else {
   const apiKey = "5df8b506b715f17ed0c74fd6fd849642";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&units=metric&appid=${apiKey}`;
-
   axios.get(apiUrl).then(handleResponse);
 
-  if (forecast.ready) {
-    return (
-      <div className="Forecast">
-        <div className="row">
-          <div className="col">
-            <h2>Wed</h2>
-            <img src={props.icon} alt="Forecast icon" />
-            <p>
-              <span className="temp-min">{forecast.minTemp}°</span> /
-              <span className="temp-max"> {forecast.maxTemp}°</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
-  }
+  return null;
 }
