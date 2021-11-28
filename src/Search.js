@@ -17,6 +17,8 @@ export default function Search() {
       wind: Math.round(response.data.wind.speed),
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       date: response.data.dt * 1000,
+      lon: response.data.coord.lon,
+      lat: response.data.coord.lat,
       ready: true,
     });
   }
@@ -67,19 +69,21 @@ export default function Search() {
           </div>
           <div className="col-4">
             <WeatherUnit metricTemperature={weatherData.temp} />
-            <ul>
-              <span className="conditions">
-                <li>
-                  <FormattedDate date={weatherData.date} />
-                </li>
+            <span className="conditions">
+              <ul>
+                <FormattedDate date={weatherData.date} />
                 <li>Humidity: {weatherData.humidity}%</li>
                 <li>Wind: {weatherData.wind}km/h</li>
-              </span>
-            </ul>
+              </ul>
+            </span>
           </div>
         </div>
         <div>
-          <Forecast icon={weatherData.iconUrl} />
+          <Forecast
+            icon={weatherData.iconUrl}
+            lon={weatherData.lon}
+            lat={weatherData.lat}
+          />
         </div>
       </div>
     );
