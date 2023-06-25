@@ -35,7 +35,7 @@ export default function Forecast(props) {
       </div>
     );
   } else {
-    const apiKey = "5df8b506b715f17ed0c74fd6fd849642";
+    const apiKey = process.env.REACT_APP_API_KEY;
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&units=metric&appid=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
 
